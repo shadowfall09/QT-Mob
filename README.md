@@ -24,9 +24,7 @@ pip install liger-kernel
 
 A preprocessed dataset (`foursquare_NYC`) is provided as a zip file in the `data` directory. Please unzip the file within the `data` directory to proceed.
 
-## Training 
-
-## Training
+## Training & Testing
 
 **Note**: Due to variations in training, the results may have slight differences.
 
