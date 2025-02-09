@@ -202,7 +202,7 @@ def test(args):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="TokenMob test")
+    parser = argparse.ArgumentParser(description="QT-Mob test")
     parser = parse_global_args(parser)
     parser = parse_dataset_args(parser)
     parser = parse_test_args(parser)
