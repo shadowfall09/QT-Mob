@@ -149,7 +149,7 @@ def main(args):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="TokenMob train")
+    parser = argparse.ArgumentParser(description="QT-Mob train")
     parser = parse_global_args(parser)
     parser = parse_dataset_args(parser)
     parser = parse_train_args(parser)
