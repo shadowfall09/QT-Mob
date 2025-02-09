@@ -49,7 +49,7 @@ Before running the training script, you need to modify several commonly used par
 The default parameters are designed to reproduce the main experiment results on the NYC dataset.
 For more detailed parameter settings, refer to utils.py.
 
-To train TokenMob, simply run the following command:
+To train QT-Mob, simply run the following command:
 ```bash
 python sft_pipeline.py
 ```
