@@ -1,4 +1,4 @@
-# TokenMob
+# QT-Mob
 
 Code for `Enhancing Large Language Models for Mobility Analytics with Semantic Location Tokenization`.
 
