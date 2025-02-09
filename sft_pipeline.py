@@ -79,7 +79,7 @@ def choose_model(base_model):
     
     
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='TokenMob')
+    parser = argparse.ArgumentParser(description='QT-Mob')
     parser = parse_dataset_args(parser)
     parser = parse_global_args(parser)
     parser = parse_train_args(parser)
