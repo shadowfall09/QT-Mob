@@ -37,6 +37,7 @@ def parse_dataset_args(parser):
     parser.add_argument("--add_profile", type=str,default="false", help="whether to add user profile")
     parser.add_argument("--multi_rec",  type=str, default="false", help="whether to use  multi mode for recovery task")
     parser.add_argument("--single_rec", type=str, default="false", help="whether to use single mode for recovery task")
+    parser.add_argument("--ablation_location_prompt", type=str, default="1", help="ablation rows of location prompt")
     return parser
 
 def parse_train_args(parser):

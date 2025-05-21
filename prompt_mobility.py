@@ -24,7 +24,7 @@ task_prompt = """\
 A trajectory is a time-ordered sequence of POI indices, where each POI visit is noted by the index and visit time. Each visit reflects a unique purpose related to that location.
 Task: """
 
-user_histroy_prompt = """User {user} had the following HISTORICAL trajectories: """
+user_history_prompt = """User {user} had the following HISTORICAL trajectories: """
 
 all_prompt = {}
 

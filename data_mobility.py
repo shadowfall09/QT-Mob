@@ -31,6 +31,7 @@ class BaseDataset(Dataset):
         self.add_profile = args.add_profile
         self.multi_rec = args.multi_rec
         self.single_rec = args.single_rec
+        self.abalation_location_prompt = args.ablation_location_prompt
                
     def _load_data(self):
         raise NotImplementedError
@@ -157,6 +158,8 @@ class SeqDataset(BaseDataset):
     def _load_data(self):
         # load data
         self.inter_data = pd.read_csv(os.path.join(self.data_path, self.data_filename[:-4]+"_"+self.mode+".csv"), converters={'trips':eval})
+        with open(os.path.join(self.data_path, "user_index.json"), 'r') as f:
+            self.user_index = json.load(f)
         
         # 读取index文件
         with open(os.path.join(self.data_path, self.index_file), 'r') as f:
@@ -238,7 +241,9 @@ class RecoveryDataset(BaseDataset):
     def _load_data(self):
         # load data
         self.inter_data = pd.read_csv(os.path.join(self.data_path, self.data_filename[:-4]+"_"+self.mode+".csv"), converters={'trips':eval})
-            
+        with open(os.path.join(self.data_path, "user_index.json"), 'r') as f:
+            self.user_index = json.load(f)    
+                    
         # 读取index文件
         with open(os.path.join(self.data_path, self.index_file), 'r') as f:
             self.indices = json.load(f)
@@ -377,9 +382,16 @@ class Index2LocationDataset(BaseDataset):
     def _load_data(self):
         # load data
         location_prompt = {}
-        for file in os.listdir(os.path.join(self.data_path, "prompts_refined")): 
-            with open(os.path.join(self.data_path, "prompts_refined", file), 'r') as f:
-                content = f.read()
+        for file in os.listdir(os.path.join(self.data_path, "prompts")): 
+            with open(os.path.join(self.data_path, "prompts", file), 'r') as f:
+                content = f.read().split("\n")
+                if self.abalation_location_prompt=="1":
+                    content.pop(3)
+                elif self.abalation_location_prompt=="2":
+                    content.pop(4)
+                elif self.abalation_location_prompt=="3":
+                    content.pop(5)
+                content = "\n".join(content)                
                 location_prompt[file.split(".")[0]] = content
         self.location_prompt = location_prompt
         
@@ -424,9 +436,16 @@ class Location2IndexDataset(BaseDataset):
     def _load_data(self):
         # load data
         location_prompt = {}
-        for file in os.listdir(os.path.join(self.data_path, "prompts_refined")): 
-            with open(os.path.join(self.data_path, "prompts_refined", file), 'r') as f:
-                content = f.read()
+        for file in os.listdir(os.path.join(self.data_path, "prompts")): 
+            with open(os.path.join(self.data_path, "prompts", file), 'r') as f:
+                content = f.read().split("\n")
+                if self.abalation_location_prompt=="1":
+                    content.pop(3)
+                elif self.abalation_location_prompt=="2":
+                    content.pop(4)
+                elif self.abalation_location_prompt=="3":
+                    content.pop(5)
+                content = "\n".join(content)
                 location_prompt[file.split(".")[0]] = content
         self.location_prompt = location_prompt
         
@@ -477,7 +496,14 @@ class TrajectoryTranslationDataset(BaseDataset):
         location_prompt = {}
         for file in os.listdir(os.path.join(self.data_path, "prompts")): 
             with open(os.path.join(self.data_path, "prompts", file), 'r') as f:
-                content = f.read()
+                content = f.read().split("\n")
+                if self.abalation_location_prompt=="1":
+                    content.pop(3)
+                elif self.abalation_location_prompt=="2":
+                    content.pop(4)
+                elif self.abalation_location_prompt=="3":
+                    content.pop(5)
+                content = "\n".join(content)
                 location_prompt[file.split(".")[0]] = content
         self.location_prompt = location_prompt
         

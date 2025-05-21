@@ -67,7 +67,7 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
 
     """build dataset"""
-    data = EmbDataset(args.data_path) # 这是通过data_process 将物品的信息转化为embedding的形式，一行是一个物品的embedding
+    data = EmbDataset(args.data_path) 
     model = RQVAE(in_dim=data.dim,
                   num_emb_list=args.num_emb_list,
                   e_dim=args.e_dim,

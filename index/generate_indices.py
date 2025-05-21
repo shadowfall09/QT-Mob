@@ -42,7 +42,7 @@ def get_collision_item(all_indices_str):
     return collision_item_groups
 
 
-parser = argparse.ArgumentParser(description="TokenMob")
+parser = argparse.ArgumentParser(description="QT-Mob")
 parser.add_argument('--ckpt_path', type=str, default="model.ckpt")
 parser.add_argument('--output_dir', type=str)
 parser.add_argument('--gpu_id', type=str, default='1', help='gpu id')
@@ -55,7 +55,7 @@ output_file = args.output_file
 output_file = os.path.join(output_dir,output_file)
 device = torch.device("cuda:"+args.gpu_id)
 
-ckpt = torch.load(ckpt_path, map_location=torch.device('cpu'))
+ckpt = torch.load(ckpt_path, map_location=torch.device('cpu'),weights_only=False)
 args = ckpt["args"]
 state_dict = ckpt["state_dict"]
 

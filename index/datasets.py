@@ -10,7 +10,6 @@ class EmbDataset(data.Dataset):
         # embeddings shape (len, dim) => (100, 4096)
 
         self.data_path = data_path
-        # self.embeddings = np.fromfile(data_path, dtype=np.float32).reshape(16859,-1)
         self.embeddings = np.load(data_path)
         self.dim = self.embeddings.shape[-1]
 

@@ -46,7 +46,8 @@ def train_model_trl(args):
     --add_prefix {args.add_prefix} \
     --sft_json_output {args.sft_json_output}\
     --multi_rec {args.multi_rec}\
-    --single_rec {args.single_rec}"
+    --single_rec {args.single_rec}\
+    --ablation_location_prompt {args.ablation_location_prompt}"
     print(command)
     subprocess.run(command, shell=True, check=True)
     
@@ -92,10 +93,10 @@ if __name__ == "__main__":
     args.metrics = TEST_METRICS
     
     os.environ["CUDA_VISIBLE_DEVICES"] = CUDA_VISIBLE_DEVICES
-    BASE_MODEL = "3.2" # 3.2, 3.1, tiny, qwen, phi, olmo
+    BASE_MODEL = "3.2"
     args.base_model = choose_model(BASE_MODEL)
     args.index_file = "index_"+args.base_model.split("/")[-1]+".json"
-    DATASET_PATH = "./data"+"/fourquare_NYC"
+    DATASET_PATH = "./data"+"/foursquare_NYC"
     TRAIN_TASKS = ["seq", "recovery","index","location","trans"]
     TEST_TASK = "seq,recovery"
     CUSTOM_NAME = "NYC_latest"

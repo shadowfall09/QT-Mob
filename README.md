@@ -26,12 +26,18 @@ A preprocessed dataset (`foursquare_NYC`) is provided as a zip file in the `data
 
 ## Training & Testing
 
-**Note**: Due to variations in training, the results may have slight differences.
+**Note**: Due to training variability, results may slightly differ across runs.
 
+### Step 1: Train the Vector Quantization Module
+
+Please adjust the parameters in `data_process/index_pipeline.py` before running the script.  
+**Note**: The released dataset already includes a pre-trained index, so this step is not required unless you wish to retrain the index yourself.
+
+### Step 2: Train the QT-Mob Model
 Before running the training script, you need to modify several commonly used parameters in `sft_pipeline.py`:
 
 1. **Set GPU Devices**  
-   Update the second line to specify the GPUs to use:  
+   Update line 2 to specify the GPUs to use:  
    ```python
    CUDA_VISIBLE_DEVICES = "0,1,2,3,4,5,6,7"
     ```
@@ -42,9 +48,9 @@ Before running the training script, you need to modify several commonly used par
     ```
 
 3.	**Set Local Model Path**  
-    Replace the local model download path in line 64 under the def `choose_model(base_model)` function.
+    Replace the local model download path in line 65 under the def `choose_model(base_model)` function.
 4.	**Configure Experiment Settings**  
-    After line 94, you can configure your experiment parameters.
+    After line 95, you can configure your experiment parameters.
 
 The default parameters are designed to reproduce the main experiment results on the NYC dataset.
 For more detailed parameter settings, refer to utils.py.
