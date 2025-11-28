@@ -4,12 +4,12 @@ Code for `Enhancing Large Language Models for Mobility Analytics with Semantic L
 
 ## Environment Setup
 
-Please follow the instructions in LLaMA-Factory to configure the basic environment. 
+Please make sure to strictly follow the version requirements — a mismatched environment can easily cause training failures or inconsistent results.
 
 ```bash
 git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
 cd LLaMA-Factory
-git checkout 25da686
+git checkout 25da686  # Use this exact revision
 pip install -e ".[torch,metrics]"
 ```
 
