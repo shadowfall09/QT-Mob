@@ -9,6 +9,7 @@ Please follow the instructions in LLaMA-Factory to configure the basic environme
 ```bash
 git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
 cd LLaMA-Factory
+git checkout 25da686
 pip install -e ".[torch,metrics]"
 ```
 
